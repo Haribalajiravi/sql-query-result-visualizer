@@ -4,17 +4,18 @@
 
 This web-based application allows users to run SQL queries and view the results. The application is designed to be easy to use and efficient, even when dealing with large amounts of data.
 
-It is designed to be easy to use and user interface is simple and intuitive, and the application provides helpful tooltips. App optimized for performance, so it can handle even large amounts of data without breaking the browser or crashing. It could be valuable tool for data analysts and other users who need to work with large amounts of data.
+The user interface is simple and intuitive, and provides helpful tooltips. The Application optimized for performance, so it can handle even large amounts of data without breaking the browser or crashing. It could be valuable tool for data analysts and other users who need to work with large amounts of data.
 
-The application is built using popular JavaScript framework [Angular](https://angular.io/quick-start) version 16.1.6. Used [Angular Material](https://material.angular.io/) to build swiftly with their components, [Tailwind CSS](https://tailwindcss.com/) to avoid writing basic style into the component.
+The application is built using popular JavaScript framework [Angular](https://angular.io/quick-start) version 16.1.6. Using [Angular Material](https://material.angular.io/) to leverage their components, [Tailwind CSS](https://tailwindcss.com/) to avoid writing basic style into the component css.
 
 Application deployed on Vercel, here is the demo link [https://sql-query-result-visualizer.vercel.app](https://sql-query-result-visualizer.vercel.app/).
 
 The application includes the following features:
 
-1. A space to enter SQL queries
-2. Press Run button or ENTER key to run the queries, 
-3. A table to display the results of the queries with pagination
+1. A space to enter SQL queries.
+2. Press Run button or ENTER key to run the queries.
+3. A table to display the results of the queries with pagination.
+4. While Query is running user can stop it immediately.
 
 ## Optimisations Insight
 
