@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSortModule} from '@angular/material/sort';
 
 import { SqlResultTableComponent } from './sql-result-table.component';
 
@@ -16,6 +17,7 @@ import { SqlResultTableComponent } from './sql-result-table.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatPaginatorModule,
+    MatSortModule,
     MatTableModule,
     MatTooltipModule,
     NgFor,

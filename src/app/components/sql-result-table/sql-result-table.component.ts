@@ -96,56 +96,10 @@ export class SqlResultTableComponent implements OnChanges {
         this.dataSource.data = data ?? [];
       };
     } else {
+      // We can handle fallback operation here if no web worker support.
+      // In this modern browser era all the browser have worker.
+      // I haven't handling fallback here since it makes no sense without real time API
       console.error('Web workers are not supported in this environment.');
-      // switch (this.query) {
-      //   case 'select * from User where id=1234':
-      //     this.dataSource.data = [];
-      //     break;
-      //   case 'select * from User where name="John"':
-      //     import('./mock-data/sm-data.mock').then((x) => {
-      //       if (!this.displayedColumns.length) {
-      //         this.displayedColumns =
-      //           x.smData && x.smData.length ? Object.keys(x.smData[0]) : [];
-      //         this.paginator.length = x.smData.length;
-      //         this.isQueryExecuted.emit(false);
-      //       }
-      //       this.dataSource.data = x.smData;
-      //     });
-      //     break;
-      //   case 'select * from User where age > 22':
-      //     import('./mock-data/md-data.mock').then((x) => {
-      //       if (!this.displayedColumns.length) {
-      //         this.displayedColumns =
-      //           x.mdData && x.mdData.length ? Object.keys(x.mdData[0]) : [];
-      //         this.paginator.length = x.mdData.length;
-      //         this.isQueryExecuted.emit(false);
-      //       }
-      //       this.dataSource.data = x.mdData;
-      //     });
-      //     break;
-      //   case 'select * from User where sex = "Male"':
-      //     import('./mock-data/lg-data.mock').then((x) => {
-      //       if (!this.displayedColumns.length) {
-      //         this.displayedColumns =
-      //           x.lgData && x.lgData.length ? Object.keys(x.lgData[0]) : [];
-      //         this.paginator.length = x.lgData.length;
-      //         this.isQueryExecuted.emit(false);
-      //       }
-      //       this.dataSource.data = x.lgData;
-      //     });
-      //     break;
-      //   case 'select * from User where isCitizen = 1':
-      //     import('./mock-data/xl-data.mock').then((x) => {
-      //       if (!this.displayedColumns.length) {
-      //         this.displayedColumns =
-      //           x.xlData && x.xlData.length ? Object.keys(x.xlData[0]) : [];
-      //         this.paginator.length = x.xlData.length;
-      //         this.isQueryExecuted.emit(false);
-      //       }
-      //       this.dataSource.data = x.xlData;
-      //     });
-      //     break;
-      // }
     }
   }
 
@@ -153,5 +107,7 @@ export class SqlResultTableComponent implements OnChanges {
     this.displayedColumns = [];
     this.dataSource.data = [];
     this.paginator.length = 0;
+    this.paginator.pageSize = 10;
+    this.paginator.pageIndex = 0;
   }
 }
