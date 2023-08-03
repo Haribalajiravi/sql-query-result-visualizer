@@ -1,7 +1,7 @@
 <mat-card class="m-3">
   <mat-card-content>
     <section class="mb-4">
-      <h4 class="text-[#fff]">Toggle a sample query</h4>
+      <h4 class="text-white">Toggle a sample query</h4>
       <mat-button-toggle-group
         [(ngModel)]="selectedQuery"
         matTooltip="Press Enter or Click Run button once selecting samples"
@@ -16,7 +16,20 @@
       </mat-button-toggle-group>
     </section>
 
-    <app-search-bar [inputQuery]="selectedQuery" (setInputQuery)="setInputQuery($event)"></app-search-bar>
-    <app-sql-result-table [query]="inputQuery"></app-sql-result-table>
+    <app-search-bar
+      [inputQuery]="selectedQuery"
+      [isQueryRunning]="isQueryRunning"
+      (setInputQuery)="setInputQuery($event)"
+      (stopQueryEmitter)="stopQuery()"
+    ></app-search-bar>
+    <mat-progress-bar
+      mode="indeterminate"
+      *ngIf="isQueryRunning"
+    ></mat-progress-bar>
+    <app-sql-result-table
+      [query]="inputQuery"
+      [action]="action"
+      (isQueryExecuted)="isQueryExecuted($event)"
+    ></app-sql-result-table>
   </mat-card-content>
 </mat-card>

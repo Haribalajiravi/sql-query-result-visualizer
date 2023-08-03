@@ -2,7 +2,6 @@ import { NgFor, NgIf } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +16,6 @@ import { SqlResultTableComponent } from './sql-result-table.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatPaginatorModule,
-    MatProgressBarModule,
     MatTableModule,
     MatTooltipModule,
     NgFor,

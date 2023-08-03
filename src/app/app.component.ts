@@ -3,11 +3,11 @@ import {
   ChangeDetectorRef,
   Component,
 } from '@angular/core';
+import { ActionType } from './components/sql-result-table/sql-result-table.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
@@ -20,6 +20,16 @@ export class AppComponent {
    * User entering query
    */
   inputQuery: string;
+
+  /**
+   * Whether query in running state
+   */
+  isQueryRunning = false;
+
+  /**
+   * Query action type
+   */
+  action: ActionType;
 
   /**
    * List of sample queries
@@ -48,10 +58,24 @@ export class AppComponent {
   ];
 
   /**
-   * Sets
-   * @param query user entering sql query
+   * Sets input query
    */
   setInputQuery(query: string) {
     this.inputQuery = query;
+    this.action = ActionType.RUN;
+  }
+
+  /**
+   * Stops executing query
+   */
+  stopQuery() {
+    this.action = ActionType.STOP;
+  }
+
+  /**
+   * Sets SQL results loaded flag
+   */
+  isQueryExecuted(isRunning: boolean) {
+    this.isQueryRunning = isRunning;
   }
 }

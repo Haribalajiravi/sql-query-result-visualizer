@@ -40,7 +40,7 @@ addEventListener('message', ({ data: { query, pageSize, pageNumber } }) => {
  * @param pageNumber
  * @returns Extracted array
  */
-const paginate = (data: any[], pageSize: number, pageNumber: number) => ({
+export const paginate = (data: any[], pageSize: number, pageNumber: number) => ({
   data: data.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
   totalCount: data.length,
 });

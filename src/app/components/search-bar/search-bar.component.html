@@ -14,11 +14,22 @@
       mat-fab
       color="primary"
       matTooltip="Run SQL query"
+      *ngIf="!isQueryRunning"
       [disabled]="!queryInputControl.valid"
-      (keyup.enter)="submit()"
-      (click)="submit()"
+      (keyup.enter)="runQuery()"
+      (click)="runQuery()"
     >
       <mat-icon>play_arrow</mat-icon>
+    </button>
+
+    <button
+      mat-fab
+      color="warn"
+      matTooltip="Stop Query"
+      *ngIf="isQueryRunning"
+      (click)="stopQuery()"
+    >
+      <mat-icon>stop</mat-icon>
     </button>
   </div>
 </form>

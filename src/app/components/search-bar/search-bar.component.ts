@@ -1,10 +1,9 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnChanges {
   /**
@@ -13,27 +12,44 @@ export class SearchBarComponent implements OnChanges {
   @Input() inputQuery?: string;
 
   /**
+   * Holds query running state
+   */
+  @Input() isQueryRunning = false;
+
+  /**
    * emits user input query
    */
   @Output() setInputQuery = new EventEmitter();
 
-  @ViewChild("sqlQueryInput") sqlQueryInput: ElementRef;
+  /**
+   * emits user stop signal
+   */
+  @Output() stopQueryEmitter = new EventEmitter();
+
+  /**
+   * Query Input element reference
+   */
+  @ViewChild('sqlQueryInput') sqlQueryInput: ElementRef;
 
   /**
    * SQL input query form controller
    */
   queryInputControl = new FormControl('', [Validators.required]);
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['inputQuery'].currentValue !== changes['inputQuery'].previousValue) {
+  ngOnChanges() {
+    if (this.inputQuery && this.inputQuery.length > 0) {
       this.queryInputControl.setValue(this.inputQuery ?? '');
-      this.sqlQueryInput.nativeElement.focus();
+      this.sqlQueryInput?.nativeElement?.focus();
     }
   }
 
-  submit() {
+  runQuery() {
     if (this.queryInputControl.valid) {
       this.setInputQuery.emit(this.queryInputControl.value);
     }
+  }
+
+  stopQuery() {
+    this.stopQueryEmitter.emit();
   }
 }

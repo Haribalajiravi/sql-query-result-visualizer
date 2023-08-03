@@ -25,6 +25,7 @@ import { SearchBarComponent } from './search-bar.component';
     NgIf,
     ReactiveFormsModule,
   ],
+
   exports: [SearchBarComponent],
 })
 export class SearchBarModule {}
