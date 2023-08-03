@@ -35,19 +35,18 @@ So, I concluded to use Pagination which is apt to analyze data with each set on 
 
 As I expected the application to load large set of data without breaking browser. I tried to load million of rows in table. Browser tab got hung and I saw snap message.
 
-If we have backend pagination available via API, we can easily show set of rows in each page with each network call. But, here User/Data analyst need wait for tiny seconds on each page interval.
+If I have backend pagination available via API, I can easily show set of rows in each page with each network call. But, here User/Data analyst need wait for few bit of a second on each page interval.
 
-If we have the large amount of data already loaded to the table, on each consecutive page visit we dont need to wait for API to respond. But now doing the browser got crashed.
-
-Then, cause for the snappiness is that I have loaded the data on main thread of JS engine which blocks all other browser components to be responsive. So, I used **web worker** file to take care of data downloading as seperate thread. Once whole data got downloaded, I can communicate to worker to get each set of paginated rows. In this way, I dont see any major issues handling huge data set.
+If I have the large amount of data loaded together on the table, on each consecutive page visit I dont need to wait for API to respond. This sounds like a nice plan. But again doing that, browser got crashed because I have loaded the data on main thread of JS engine which blocks all other browser components to be responsive. So, I have used **web worker** file to take care of data downloading as seperate thread. Once whole data got downloaded, I can communicate to worker to get each set of paginated rows. In this way, I dont see any major issues handling huge data set.
 
 ## Page Load Time
 
 Here is the page load time summary which is recorded from chrome performance tool.
+
 ![Page Load Time](image.png)
 
-But for our application, page load time doesn't matter as it matters when SQL result loading on to the DOM.
+But for our application, page load time doesn't matter, as it matters when data loading on to the DOM.
 
 My Main goal is to keep the application stable, accessible and easy to handle large data.
 
-As per my implementation, data load is solely depends on size of the data, capacity of the browser to take data load. From Frontend perspective, I am shown required amount of data to the user.
+As per my implementation, data load is solely depends on size of the data, capacity of the browser to take the dataload. From Frontend perspective, I am showing required amount of data to the users viewport.
